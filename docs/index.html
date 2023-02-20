@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>鱼你分享</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <style>
-    .giscus iframe {
-      border: none;
-    }
-  </style>
-</head>
-<body>
-  <div id="app"></div>
-  <script>
-    window.$docsify = {
-        name: '小鱼的笔记',
-        repo: 'https://github.com/youngfish42/note',
+  <head>
+    <meta charset="UTF-8" />
+    <title>鱼你分享</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
+    />
+    <style>
+      .giscus iframe {
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script
+      async
+      src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+    ></script>
+    <script>
+      window.$docsify = {
+        name: "小鱼的笔记",
+        repo: "https://github.com/youngfish42/note",
         loadSidebar: true,
         auto2top: true,
         sidebarDisplayLevel: 1,
         subMaxLevel: 0,
         alias: {
-            '/.*/_sidebar.md': '/_sidebar.md'
+          "/.*/_sidebar.md": "/_sidebar.md",
         },
         pagination: {
-            previousText: '上一节',
-            nextText: '下一节',
+          previousText: "上一节",
+          nextText: "下一节",
         },
         search: {
-            placeholder: '搜索',
-            noData: '找不到结果！',
+          placeholder: "搜索",
+          noData: "找不到结果！",
         },
-        count:{
-            countable: true,
-            position: 'top',
-            margin: '10px',
-            float: 'right',
-            fontsize:'0.9em',
-            color:'rgb(90,90,90)',
-            language:'chinese',
-            isExpected: true
+        count: {
+          countable: true,
+          position: "top",
+          margin: "10px",
+          float: "right",
+          fontsize: "0.9em",
+          color: "rgb(90,90,90)",
+          language: "chinese",
+          isExpected: true,
         },
         formatUpdated: "{MM}/{DD} {HH}:{mm}",
         plugins: [
@@ -53,24 +63,28 @@
                   .replace("raw.githubusercontent.com", "github.com")
                   .replace(/\/master/, "/blob/master");
               } else {
-                url =
-                  "https://github.com/youngfish42/note/tree/main/docs";
+                url = "https://github.com/youngfish42/note/tree/main/docs";
               }
               var editHtml = "[:memo: 编辑内容](" + url + ")\n";
               var year = new Date().getFullYear();
+
+              var busuanziHtml =
+                '<span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv"></span>次</span>    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>    <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span>';
 
               return (
                 editHtml +
                 html +
                 "\n\n----\n\n" +
+                busuanziHtml +
+                "\n\n" +
                 "©  2022 - " +
                 year +
                 " 白小鱼 " +
-                "Powered by "+
+                "Powered by " +
                 '<a href="https://docsify.js.org">docsify</a>'
               );
             });
-            
+
             // discussions with giscus
             hook.doneEach(function () {
               var path = vm.route.path === "/" ? "/index" : vm.route.path;
@@ -98,7 +112,7 @@
               dsq.type = "text/javascript";
               dsq.async = true;
               dsq.setAttribute("src", "https://giscus.app/client.js");
-              dsq.setAttribute("data-repo","youngfish42/note");
+              dsq.setAttribute("data-repo", "youngfish42/note");
               dsq.setAttribute("data-repo-id", "R_kgDOI_-1iw");
               dsq.setAttribute("data-category", "Announcements");
               dsq.setAttribute("data-category-id", "DIC_kwDOI_-1i84CUU2a");
@@ -119,55 +133,41 @@
               document
                 .getElementById("main")
                 .insertBefore(dsq, document.getElementById("main").lastChild);
-
-              document
-                .getElementById("docsify-darklight-theme")
-                .addEventListener("click", function () {
-                  var theme =
-                    getComputedStyle(document.body).getPropertyValue(
-                      "--toogleBackground"
-                    ) === "#ffffff"
-                      ? "dark"
-                      : "light";
-
-                  // console.log("listener", theme);
-                  var frame = document.querySelector(".giscus-frame");
-                  frame.contentWindow.postMessage(
-                    { giscus: { setConfig: { theme } } },
-                    "https://giscus.app"
-                  );
-                });
             });
           },
         ],
-    }
-</script>
-<!-- Put them above docsify.min.js -->
-<script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/docsify.min.js"></script>
-<!-- google analytics-->
-<script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js" data-ga="G-P6F05FGK1F"></script>
-<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
-<!-- code render-->
-<script src="//cdn.jsdelivr.net/npm/prismjs@latest/components/prism-bash.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/prismjs@latest/components/prism-python.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/docsify-pagination@latest/dist/docsify-pagination.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+      };
+    </script>
+    <!-- Put them above docsify.min.js -->
+    <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/docsify.min.js"></script>
+    <!-- google analytics-->
+    <script
+      src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"
+      data-ga="G-P6F05FGK1F"
+    ></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
+    <!-- code render-->
+    <script src="//cdn.jsdelivr.net/npm/prismjs@latest/components/prism-bash.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@latest/components/prism-python.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify-pagination@latest/dist/docsify-pagination.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/marked@3"></script>
-<!-- CDN files for docsify-katex -->
-<script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/marked@3"></script>
+    <!-- CDN files for docsify-katex -->
+    <script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
 
-<!-- sidebar collapse -->
-<script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse@latest/dist/docsify-sidebar-collapse.min.js"></script>
-<!-- search -->
-<script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/plugins/search.js"></script>
-<!-- count -->
-<script src="//cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script>
-<!-- image -->
-<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
-
-
-</body>
+    <!-- sidebar collapse -->
+    <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse@latest/dist/docsify-sidebar-collapse.min.js"></script>
+    <!-- search -->
+    <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/plugins/search.js"></script>
+    <!-- count -->
+    <script src="//cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script>
+    <!-- image -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+  </body>
 </html>
