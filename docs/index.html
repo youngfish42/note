@@ -38,7 +38,103 @@
             color:'rgb(90,90,90)',
             language:'chinese',
             isExpected: true
-        }
+        },
+        formatUpdated: "{MM}/{DD} {HH}:{mm}",
+        plugins: [
+          function (hook, vm) {
+            hook.beforeEach(function (html) {
+              if (/githubusercontent\.com/.test(vm.route.file)) {
+                url = vm.route.file
+                  .replace("raw.githubusercontent.com", "github.com")
+                  .replace(/\/master/, "/blob/master");
+              } else {
+                url =
+                  "https://github.com/youngfish42/note/tree/main/docs";
+              }
+              var editHtml = "[:memo: 编辑内容](" + url + ")\n";
+              var year = new Date().getFullYear();
+
+              return (
+                editHtml +
+                html +
+                "\n\n----\n\n" +
+                "©  2022 - " +
+                year +
+                " 白小鱼 " +
+                "Powered by "+
+                '<a href="https://docsify.js.org">docsify</a>'
+              );
+            });
+            
+            // discussions with giscus
+            hook.doneEach(function () {
+              var path = vm.route.path === "/" ? "/index" : vm.route.path;
+              // remove first '/'
+              path = path.substr(1);
+
+              // console.log(path);
+              // convert url to plain text
+              path = decodeURI(path);
+              console.log(path);
+
+              // console.log(path_split);
+              // console.log(last_item);
+
+              var theme =
+                getComputedStyle(document.body).getPropertyValue(
+                  "--toogleBackground"
+                ) === "#ffffff"
+                  ? "dark"
+                  : "light";
+
+              // console.log(theme);
+
+              var dsq = document.createElement("script");
+              dsq.type = "text/javascript";
+              dsq.async = true;
+              dsq.setAttribute("src", "https://giscus.app/client.js");
+              dsq.setAttribute("data-repo","youngfish42/note");
+              dsq.setAttribute("data-repo-id", "R_kgDOI_-1iw");
+              dsq.setAttribute("data-category", "Announcements");
+              dsq.setAttribute("data-category-id", "DIC_kwDOI_-1i84CUU2a");
+              dsq.setAttribute("data-mapping", "specific");
+              dsq.setAttribute("data-term", path);
+              dsq.setAttribute("data-reactions-enabled", "1");
+              dsq.setAttribute("data-emit-metadata", "0");
+              dsq.setAttribute("data-input-position", "bottom");
+              dsq.setAttribute("data-theme", theme);
+              dsq.setAttribute("data-lang", "zh-CN");
+              dsq.setAttribute("data-loading", "lazy");
+              dsq.setAttribute("crossorigin", "anonymous");
+              // remove last iframe border
+              var iframes = document.getElementsByTagName("iframe");
+              // console.log(iframes);
+              // iframes[iframes.length - 1].style.border = "none";
+              // append to last second
+              document
+                .getElementById("main")
+                .insertBefore(dsq, document.getElementById("main").lastChild);
+
+              document
+                .getElementById("docsify-darklight-theme")
+                .addEventListener("click", function () {
+                  var theme =
+                    getComputedStyle(document.body).getPropertyValue(
+                      "--toogleBackground"
+                    ) === "#ffffff"
+                      ? "dark"
+                      : "light";
+
+                  // console.log("listener", theme);
+                  var frame = document.querySelector(".giscus-frame");
+                  frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                  );
+                });
+            });
+          },
+        ],
     }
 </script>
 <!-- Put them above docsify.min.js -->
@@ -63,21 +159,7 @@
 <script src="//cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script>
 <!-- image -->
 <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
-<!-- discussions with giscus-->
-<script src="https://giscus.app/client.js"
-        data-repo="youngfish42/note"
-        data-repo-id="R_kgDOI_-1iw"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOI_-1i84CUU2a"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
+
+
 </body>
 </html>
