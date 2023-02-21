@@ -97,7 +97,7 @@ docsify serve docs
 > 2. **[giscus](https://github.com/apps/giscus) app 已安装**否则访客将无法评论和回应。
 > 3. **Discussions**功能已[在你的仓库中启用](https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/enabling-or-disabling-github-discussions-for-a-repository)。
 
-执行完上述三个步骤后， giscus 会自动生成一段包含在 <script> 标签 中的代码，你把这段代码插入网站入口文件 index.html 的对应位置即可。
+执行完上述三个步骤后， giscus 会自动生成一段包含在 `<script>` 标签 中的代码，你把这段代码插入网站入口文件 index.html 的对应位置即可。
 
 ```html
 <script src="https://giscus.app/client.js"
