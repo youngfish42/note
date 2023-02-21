@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>鱼你分享</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <link rel="shortcut icon" href="fish_favicon.ico" /> 
+    <link rel="shortcut icon" href="fish_favicon.ico" />
     <meta name="description" content="Description" />
     <meta
       name="viewport"
@@ -12,9 +12,12 @@
     />
     <link
       rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
+      href="//cdn.jsdelivr.net/npm/docsify@latest/lib/themes/vue.css"
     />
     <style>
+      body:not(.ready) {
+        overflow: auto;
+      }
       .giscus iframe {
         border: none;
       }
@@ -32,18 +35,23 @@
         repo: "https://github.com/youngfish42/note",
         loadSidebar: true,
         auto2top: true,
+        executeScript: true,
+        coverpage: false,
         sidebarDisplayLevel: 1,
         subMaxLevel: 0,
-        alias: {
-          "/.*/_sidebar.md": "/_sidebar.md",
-        },
+        alias: {},
         pagination: {
           previousText: "上一节",
           nextText: "下一节",
         },
         search: {
-          placeholder: "搜索",
-          noData: "找不到结果！",
+          noData: {
+            "/": "没有结果!",
+          },
+          paths: "auto",
+          placeholder: {
+            "/": "🔍搜索",
+          },
         },
         count: {
           countable: true,
@@ -140,7 +148,9 @@
       };
     </script>
     <!-- Put them above docsify.min.js -->
-    <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/docsify.min.js"></script>
+    <!-- <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/docsify.min.js"></script> -->
+    <!-- search -->
+    <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/plugins/search.min.js"></script>
     <!-- google analytics-->
     <script
       src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"
@@ -164,11 +174,9 @@
 
     <!-- sidebar collapse -->
     <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse@latest/dist/docsify-sidebar-collapse.min.js"></script>
-    <!-- search -->
-    <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/plugins/search.js"></script>
     <!-- count -->
     <script src="//cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script>
     <!-- image -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@latest/lib/plugins/zoom-image.min.js"></script>
   </body>
 </html>
