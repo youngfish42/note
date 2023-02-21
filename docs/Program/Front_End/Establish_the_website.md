@@ -85,7 +85,7 @@ docsify serve docs
 
 [giscus](https://giscus.app/zh-CN) 是 [@beiyuouo](https://github.com/beiyuouo/) 给我推荐的，它是由 [GitHub Discussions](https://docs.github.com/en/discussions) 驱动的评论系统。
 
-### 加载插件
+### 2.1 加载插件
 
 如果想加载该插件，需要将giscus链接到你的仓库。
 
@@ -160,7 +160,31 @@ docsify serve docs
 
 我先画了一个方形的图片，然后用 [bitbug](https://www.bitbug.net/) 压缩到 32x32 尺寸。
 
-![fish_favicon.ico](../fish_favicon.ico) 
+![fish_favicon.ico](../../fish_favicon.ico) 
+
+
+
+## 后记：存在问题和未来解决方案
+
+经过 [@beiyuouo](https://github.com/beiyuouo/) 的提醒，我现在的 Docsify 的方案存在安全方面的问题[^github_page]，主要集中在安全性和版权方面：
+
+1. 无法隐藏源码，目录下的文章可以随意的复制然后放到别的地方当作他们自己的内容。
+
+2. 无法隐藏修改记录。如果你有一些内容突然不想放到博客上了，于是你把部分内容给删了，但是别人仍然可以通过访问仓库源码的历史记录查看到该文件的历史，修改一览无余。
+
+3. 很难通过协议保护自己的内容版权。
+
+   
+
+解决方案：
+
+1. 针对上述第一点问题。最安全的做法是，把源码和网站内容分开，源码在私有仓库中，网站内容在公共仓库中。那么需要建立两个仓库，用 actions 把俩仓库连接起来（这个比较麻烦，可以参考文章 [Hugo Deploy 安全分发你的 Hugo 站点](https://blog.echosec.top/p/hugo-hugo-deploy/)） 。如果退而求其次，我可以把本网站所在的仓库私有化，然后仅通过 Github pages 展示网站（Github Pro 账号允许通过私有仓库部署 Github pages）
+2. 评论可以单独再开一个公开仓库进行托管，从本网站的仓库分离出来。、
+3. 再开一个个人博客，本网站仅作笔记用途，少放原创内容。
+
+
+
+此外，我还想建立一个基于 [Hugo](https://gohugo.io/) 的博客站点（案例 [Lil’Log](https://lilianweng.github.io/) 和教程 [使用 Hugo + Github 搭建个人博客](https://zhuanlan.zhihu.com/p/105021100)），可以用  [@beiyuouo](https://github.com/beiyuouo/) 提供的 （无需本地安装Hugo的）[**hugo-papermod-template 模板**](https://github.com/awesome-actions-template/hugo-papermod-template) 一键生成。
 
 
 
@@ -181,3 +205,4 @@ docsify serve docs
 [^docsify_quickstart]: https://docsify.js.org/#/zh-cn/quickstart
 [^nodejs-install-setup]: https://www.runoob.com/nodejs/nodejs-install-setup.html
 [^migrating]: https://github.com/giscus/giscus#migrating
+[^github_page]: https://www.xheldon.com/tech/the-using-of-github-pages.html
