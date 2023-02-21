@@ -179,12 +179,20 @@ docsify serve docs
 解决方案：
 
 1. 针对上述第一点问题。最安全的做法是，把源码和网站内容分开，源码在私有仓库中，网站内容在公共仓库中。那么需要建立两个仓库，用 actions 把俩仓库连接起来（这个比较麻烦，可以参考文章 [Hugo Deploy 安全分发你的 Hugo 站点](https://blog.echosec.top/p/hugo-hugo-deploy/)） 。如果退而求其次，我可以把本网站所在的仓库私有化，然后仅通过 Github pages 展示网站（Github Pro 账号允许通过私有仓库部署 Github pages）
-2. 评论可以单独再开一个公开仓库进行托管，从本网站的仓库分离出来。、
+2. 评论可以单独再开一个公开仓库进行托管，从本网站的仓库分离出来。
 3. 再开一个个人博客，本网站仅作笔记用途，少放原创内容。
 
 
 
-此外，我还想建立一个基于 [Hugo](https://gohugo.io/) 的博客站点（案例 [Lil’Log](https://lilianweng.github.io/) 和教程 [使用 Hugo + Github 搭建个人博客](https://zhuanlan.zhihu.com/p/105021100)），可以用  [@beiyuouo](https://github.com/beiyuouo/) 提供的 （无需本地安装Hugo的）[**hugo-papermod-template 模板**](https://github.com/awesome-actions-template/hugo-papermod-template) 一键生成。
+此外，我还想建立一个基于 [Hugo](https://gohugo.io/) 的博客站点（案例 [Lil’Log](https://lilianweng.github.io/) 和教程 [使用 Hugo + Github 搭建个人博客](https://zhuanlan.zhihu.com/p/105021100)）。
+
+可以用  [@beiyuouo](https://github.com/beiyuouo/) 提供的 （无需本地安装Hugo的）[**hugo-papermod-template 模板**](https://github.com/awesome-actions-template/hugo-papermod-template) 一键生成。
+
+> 后记：
+>
+> 使用上述模板，我真利用 GitHub Actions + GitHub Pages + Hugo 又搭建了一个[博客](https://youngfish42.github.io/)。
+
+
 
 
 
