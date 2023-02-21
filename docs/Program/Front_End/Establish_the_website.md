@@ -138,7 +138,7 @@ docsify serve docs
 
 对应的 commit [busuanzi](https://github.com/youngfish42/note/commit/6538894a9ddf47ec6379085f732c666faabf4419)
 
-## 网页访问统计 
+## 4. 网页访问统计 
 
 ### Google Analytics
 
@@ -152,7 +152,7 @@ docsify serve docs
 
 > 好像没被正确配置，之后再写
 
-## 网页图标ICON
+## 5. 网页图标ICON
 
 **favicon.ico**一般用于作为缩略的网站标志，它显示位于浏览器的地址栏或者在标签上，如图红圈的位置，用于显示网站的logo。目前主要的浏览器都支持 *favicon.ico* 图标。
 
@@ -160,7 +160,21 @@ docsify serve docs
 
 我先画了一个方形的图片，然后用 [bitbug](https://www.bitbug.net/) 压缩到 32x32 尺寸。
 
-![fish_favicon.ico](..\fish_favicon.ico) 
+![fish_favicon.ico](../fish_favicon.ico) 
+
+
+
+## 鸣谢
+
+特别感谢 [@beiyuouo](https://github.com/beiyuouo/) 的慷慨帮助。在创建网页的过程中我遇到了很多奇妙的 Bug，beiyu 都不厌其烦地帮我一一修正了。
+
+感谢 [@Datawhale](https://github.com/datawhalechina) 开源组织的朋友们，特别是 [@Relph1119](https://github.com/Relph1119) ，他所创建的组队学习笔记和习题解答项目 [my-team-learning](https://relph1119.github.io/my-team-learning) 非常翔实，他在学习路上强大的自驱力也值得我学习。
+
+感谢 [海南大学飞跃手册](https://hainanu-application.github.io/) 和 [上海交通大学飞跃手册](https://survivesjtu.github.io/SJTU-Application/#/) 启发了我怎么用现代的方法收集和组织经验分享。
+
+最后感谢 [@Shmily1368](https://github.com/Shmily1368) 和 [@lokinko](https://github.com/lokinko) 小伙伴们的陪伴和支持，如果不是他们每天拉着讨论和催更，我可能也不会想写这么多内容。
+
+
 
 
 
