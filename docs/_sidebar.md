@@ -5,6 +5,8 @@
       - Arxiv
     - 文献阅读
   - 文献写作
+    - [吴恩达建议](Research\papers_writing\notes from Andrew Ng.md)
+    - [论文十问](Research\papers_writing\ten questions.md)
   
 - 编程
   - 前端
